@@ -21,8 +21,10 @@ PRESS=[('n_ndtv.svg','NDTV'),('n_toi.svg','Times of India'),('n_ht.svg','Hindust
 GUESTS=[('guest1','Masarrat A. Shah'),('guest2','Neera Paritosh'),('guest3','Dr. Neha Sachde'),('guest4','Geetika Anand Gupta'),('guest5','Niradananda Nanda')]
 VOICES=['madhuri','parul','aakriti','shruti','rima','zarine','shalinee','neera','niraj','kavita']
 def esc(s):return s.replace('&','&amp;')
+def RC(f):
+    return 'rc' if f.startswith('logo-') else ''
 def logogrid():
-    return '<div class="lg">'+''.join(f'<div class="rv" data-d="{(i%5)*60}"><img class="{'rc' if f.startswith('logo-') else ''}" src="{A}{f}.png" alt="{esc(n)}" loading="lazy">{"<small>Case study</small>" if n in CASELOGO else ""}</div>' for i,(f,n) in enumerate(LOGOS))+'</div>'
+    return '<div class="lg">'+''.join(f'<div class="rv" data-d="{(i%5)*60}"><img class="{RC(f)}" src="{A}{f}.png" alt="{esc(n)}" loading="lazy">{"<small>Case study</small>" if n in CASELOGO else ""}</div>' for i,(f,n) in enumerate(LOGOS))+'</div>'
 def pressmarq():
     one=''.join(f'<img src="{P}logos/{f}" alt="{n}" loading="lazy">' for f,n in PRESS)
     return f'<div class="strip"><div class="marq"><div class="t">{one}{one}</div></div></div>'
