@@ -8,7 +8,7 @@ const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)retur
 $$('.story .big').forEach(p=>{const words=p.textContent.trim().split(/\s+/);p.innerHTML=words.map(w=>'<span class="w">'+w+'</span>').join(' ');const ws=$$('.w',p);const up=()=>{const r=p.getBoundingClientRect(),h=innerHeight;const prog=Math.min(Math.max((h*.85-r.top)/(r.height+h*.35),0),1);const n=Math.round(prog*ws.length);ws.forEach((w,i)=>w.classList.toggle('on',i<n))};addEventListener('scroll',up,{passive:true});up()});
 // hero canvas: slow golden streaks
 const cv=$('#streaks');if(cv){const c=cv.getContext('2d');let W,H,D=Math.min(devicePixelRatio||1,2);const arcs=[];const rs=()=>{W=cv.clientWidth;H=cv.clientHeight;cv.width=W*D;cv.height=H*D;c.setTransform(D,0,0,D,0,0)};rs();addEventListener('resize',rs);
-for(let i=0;i<260;i++)arcs.push({r:.18+Math.random()*1.5,a0:Math.random()*Math.PI*2,len:.25+Math.random()*1.1,w:.4+Math.random()*1.1,al:.1+Math.random()*.5,sp:(Math.random()-.5)*.00012,hue:36+Math.random()*10});
+for(let i=0;i<340;i++)arcs.push({r:.18+Math.random()*1.5,a0:Math.random()*Math.PI*2,len:.25+Math.random()*1.1,w:.4+Math.random()*1.1,al:.25+Math.random()*.6,sp:(Math.random()-.5)*.00012,hue:36+Math.random()*10});
 const draw=t=>{c.clearRect(0,0,W,H);c.globalCompositeOperation='lighter';const cx=W*1.02,cy=-H*.18,s=Math.max(W,H);for(const a of arcs){const st=a.a0+t*a.sp;c.beginPath();c.arc(cx,cy,a.r*s,st,st+a.len);c.strokeStyle='hsla('+a.hue+',72%,'+(52+a.al*30)+'%,'+a.al*.55+')';c.lineWidth=a.w;c.stroke()}};
 if(rm)draw(0);else{let vis=true;new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);const loop=t=>{if(vis)draw(t);requestAnimationFrame(loop)};requestAnimationFrame(loop)}}
 // terminal
