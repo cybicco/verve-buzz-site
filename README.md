@@ -18,3 +18,11 @@ Static multi-page site (built by `build.py`) with Cloudflare Pages Functions and
 - Press and distribution logos are shown as distribution channels via People & Perspectives; confirm the wording.
 - AI-driven positioning copy: confirm the tooling described.
 - Podcast platform link points to the pages.dev address until peopleandperspectives.in is live.
+
+## Redesign notes (Atomik-style premium layout)
+- assets/po/*.webp: poster graphics from the owner's own press-feature posters, with the Elevate logo removed (cropped or inpainted). The "Forbes" crop lost the word "Celebrates". Posters with embedded Elevate text were skipped.
+- assets/pp/launch.mp4 (+ launch.jpg): compressed from the final People & Perspectives launch video, shown muted.
+- assets/v: portfolio images from the supplied portfolio PDFs, client logos and avatars from verve.buzz. assets/pp: faces, press logos and certificate badges from the P&P asset set.
+- No designer is named or credited anywhere. No pricing on the site.
+- To confirm with owner: certification badges (P&P set), press/distribution wording, AI-positioning copy, podcast button URL (pages.dev until peopleandperspectives.in is live), no Terms/Privacy pages yet.
+- Licences: all assets supplied by the owner; fonts Inter and Instrument Serif (SIL OFL).
