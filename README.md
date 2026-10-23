@@ -26,3 +26,9 @@ Static multi-page site (built by `build.py`) with Cloudflare Pages Functions and
 - No designer is named or credited anywhere. No pricing on the site.
 - To confirm with owner: certification badges (P&P set), press/distribution wording, AI-positioning copy, podcast button URL (pages.dev until peopleandperspectives.in is live), no Terms/Privacy pages yet.
 - Licences: all assets supplied by the owner; fonts Inter and Instrument Serif (SIL OFL).
+
+## Reconciliation pass (pending owner approval)
+- Press-masthead logo strip (NDTV, TOI, Forbes, etc.) removed from Home and Podcast pages until the owner confirms the distribution claim; data/function kept in build.py to re-enable.
+- Footer certification badges (P&P set) removed until the owner supplies Verve's own certificates; CERTS data kept in build.py to re-enable.
+- Poster section copy changed from "distributed end to end" to "delivered end to end".
+- Damaged Forbes poster crop removed (the inpainting had erased the word "Celebrates"); its marquee slot reuses the Shalinee crop and the Work item was removed.
