@@ -41,12 +41,11 @@ h1{font-size:clamp(40px,6.2vw,76px)}h2{font-size:clamp(32px,4.4vw,54px)}h3{font-
 .hero h1{max-width:900px;margin:0 auto 22px}.hero .lead{margin:0 auto 34px;color:#cfcfd4}
 .hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .fan{--w:clamp(130px,17vw,230px);position:relative;z-index:2;display:flex;justify-content:center;margin-top:clamp(40px,5vw,70px);height:clamp(190px,21vw,270px)}
-.fan figure{position:absolute;bottom:calc(-1 * clamp(40px,6vw,90px));width:var(--w);aspect-ratio:3/4;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.14);transform-origin:50% 120%;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s;opacity:0}
-.fan.in figure{opacity:1}
+.fan figure{position:absolute;bottom:calc(-1 * clamp(40px,6vw,90px));width:var(--w);aspect-ratio:3/4;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.14);transform-origin:50% 120%;opacity:1;animation:fanin .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fanin{from{opacity:0;transform:rotate(calc(var(--k)*7deg)) translateY(30px)}to{opacity:1;transform:rotate(calc(var(--k)*7deg))}}
 .fan figure img{width:100%;height:100%;object-fit:cover}
 
-.fan figure{left:calc(50% - var(--w)/2 + var(--k)*var(--w)*.72);transform:rotate(calc(var(--k)*7deg)) translateY(30px)}
-.fan.in figure{transform:rotate(calc(var(--k)*7deg))}
+.fan figure{left:calc(50% - var(--w)/2 + var(--k)*var(--w)*.72);transform:rotate(calc(var(--k)*7deg))}
 .fan figure:nth-child(1){--k:-2}.fan figure:nth-child(2){--k:-1}.fan figure:nth-child(3){--k:0;z-index:3}.fan figure:nth-child(4){--k:1}.fan figure:nth-child(5){--k:2}
 @media(max-width:700px){.fan figure:nth-child(1),.fan figure:nth-child(5){display:none}.fan{--w:150px}}
 /* marquee */
