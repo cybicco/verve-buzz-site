@@ -20,4 +20,15 @@ $$('.filters button').forEach(b=>b.addEventListener('click',()=>{$$('.filters bu
 const lb=$('.lb');if(lb){$$('.mas img').forEach(i=>i.addEventListener('click',()=>{$('img',lb).src=i.currentSrc||i.src;$('img',lb).alt=i.alt;lb.classList.add('on')}));lb.addEventListener('click',()=>lb.classList.remove('on'));addEventListener('keydown',e=>e.key==='Escape'&&lb.classList.remove('on'))}
 // forms
 $$('form.f').forEach(f=>f.addEventListener('submit',async e=>{e.preventDefault();const m=$('.msg',f),btn=$('button[type=submit]',f);m.className='msg';m.textContent='Sending...';btn.disabled=true;const d=Object.fromEntries(new FormData(f));d.needs=$$('input[name=need]:checked',f).map(x=>x.value).join(', ');delete d.need;d.page=location.pathname;try{const r=await fetch('/api/lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)});const j=await r.json().catch(()=>({}));if(r.ok){m.className='msg ok';m.textContent='Thank you. We will reach out within one working day.';f.reset()}else{m.className='msg err';m.textContent=j.error||'Something went wrong. Please email hello@verve.buzz.'}}catch(_){m.className='msg err';m.textContent='Network error. Please email hello@verve.buzz.'}btn.disabled=false}));
+
+// v9 additions: progress bar, tilt cards, fan parallax, timeline draw
+const pb=document.createElement('div');pb.className='pbar';pb.innerHTML='<i></i>';document.body.appendChild(pb);const pbi=pb.firstChild;
+addEventListener('scroll',()=>{const m=document.documentElement.scrollHeight-innerHeight;pbi.style.transform='scaleX('+(m>0?scrollY/m:0)+')'},{passive:true});
+// designer tilt on outcome cards (fine pointers only)
+if(matchMedia('(pointer:fine)').matches&&!rm){$$('.tilt').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');c.style.transform='perspective(900px) rotateX('+((.5-y)*5)+'deg) rotateY('+((x-.5)*7)+'deg) translateY(-4px)'});c.addEventListener('pointerleave',()=>{c.style.transform=''})});
+// hero fan pointer parallax
+const fan=$('#fan'),hero=$('.hero');
+if(fan&&hero){hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;fan.style.transform='translate3d('+(x*-18)+'px,'+(y*-10)+'px,0)'},{passive:true});hero.addEventListener('pointerleave',()=>{fan.style.transform=''})}}
+// gtm timeline draw on scroll
+const tl=$('.tl');if(tl){const tle=$('.tline',tl);const upd=()=>{const r=tl.getBoundingClientRect(),prog=Math.min(Math.max((innerHeight*.75-r.top)/(r.height),0),1);tle.style.setProperty('--tlp',prog)};addEventListener('scroll',upd,{passive:true});upd()}
 })();
