@@ -374,3 +374,11 @@ a:focus-visible,.btn:focus-visible,summary:focus-visible{outline:2px solid var(-
 .outc .on{margin-bottom:20px}
 .outc h3{margin-top:auto}
 .nums .kick,.nums h2{position:relative;z-index:2}
+
+/* Revision v11: client wall on home - premium hover polish, section spacing. */
+.clientwall{padding-top:20px}
+.clientwall .lg{margin-top:6px}
+.lg>div{transition:background .35s ease}
+.lg>div:hover{background:#fbfbf6}
+.lg>div:hover img{transform:scale(1.09)}
+@media(max-width:700px){.clientwall{padding-top:0}}
